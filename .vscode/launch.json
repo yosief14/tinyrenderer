@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug tinyrenderer",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/tinyrenderer",
+      "args": [
+        "obj/african_head/african_head.obj",
+        "obj/african_head/african_head_eye_inner.obj"
+      ],
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "cmake: build"
+    }
+  ]
+}

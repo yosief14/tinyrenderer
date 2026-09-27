@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "cmake: configure (Debug)",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "-S", ".",
+        "-B", "build",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "cmake: build",
+      "type": "shell",
+      "command": "cmake",
+      "args": ["--build", "build", "-j"],
+      "dependsOn": "cmake: configure (Debug)",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "run: tinyrenderer",
+      "type": "shell",
+      "command": "${workspaceFolder}/build/tinyrenderer",
+      "args": [
+        "obj/african_head/african_head.obj",
+        "obj/african_head/african_head_eye_inner.obj"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
+      "dependsOn": "cmake: build",
+      "problemMatcher": []
+    }
+  ]
+}
